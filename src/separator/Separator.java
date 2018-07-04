@@ -3,11 +3,15 @@ package separator;
 import car_factory.Car;
 import car_factory.CarFactory;
 
+import javax.swing.text.html.parser.Parser;
+import java.util.ArrayList;
+
 public class Separator {
 
     private CarFactory carFactory;
     private TrainingCars trainingCars;
     private ValidationCars validationCars;
+    private More_similar more_similar;
     private int limitOfTrainingCars;
     private int limitOfValidationCars;
 
@@ -15,6 +19,7 @@ public class Separator {
         this.carFactory = new CarFactory();
         this.trainingCars = new TrainingCars();
         this.validationCars = new ValidationCars();
+        this.more_similar = new More_similar();
         this.limitOfTrainingCars = 9532;
         this.limitOfValidationCars = 2383;
 
@@ -60,6 +65,33 @@ public class Separator {
         }else {
             return false;
         }
+    }
+
+    public void averagePriceEstimate(){
+
+        for(Car validationCar : this.validationCars.getValidationCars()){
+            float average = averagePrice(validationCar);
+            System.out.println("---------------");
+            System.out.println(validationCar);
+            System.out.println("Average price: " + average);
+        }
+
+    }
+
+
+    public float averagePrice(Car car){
+        ArrayList<Car>  twentyMostSimilar = twentyMostSimilar(car);
+        float sum = 0;
+        for(Car currentCar : twentyMostSimilar){
+            sum += Float.parseFloat(currentCar.getMsrp());
+        }
+
+        return sum/twentyMostSimilar.size();
+    }
+
+
+    public  ArrayList<Car> twentyMostSimilar(Car car){
+        return this.more_similar.twentyMostSimilar(this.trainingCars.getTrainingCars(), car);
     }
 
 

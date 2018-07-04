@@ -12,6 +12,6 @@ public class CBR_System {
 
         Separator separator = new Separator();
         separator.separateCars();
-
+        separator.averagePriceEstimate();
     }
 }
