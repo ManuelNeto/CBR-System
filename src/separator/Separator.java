@@ -2,8 +2,10 @@ package separator;
 
 import car_factory.Car;
 import car_factory.CarFactory;
+import file_util.WriteFile;
 
 import javax.swing.text.html.parser.Parser;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Separator {
@@ -12,6 +14,7 @@ public class Separator {
     private TrainingCars trainingCars;
     private ValidationCars validationCars;
     private More_similar more_similar;
+    private WriteFile writeFile;
     private int limitOfTrainingCars;
     private int limitOfValidationCars;
 
@@ -22,6 +25,8 @@ public class Separator {
         this.more_similar = new More_similar();
         this.limitOfTrainingCars = 9532;
         this.limitOfValidationCars = 2383;
+
+        this.writeFile = new WriteFile();
 
         carFactory.createCars();
         System.out.println("Total: " + carFactory.getObjectCars().size());
@@ -67,15 +72,16 @@ public class Separator {
         }
     }
 
-    public void averagePriceEstimate(){
+    public void averagePriceEstimate() throws IOException {
 
         for(Car validationCar : this.validationCars.getValidationCars()){
             float average = averagePrice(validationCar);
             float errorMeasurement = errorMeasurement(average, Float.parseFloat(validationCar.getMsrp()));
-            System.out.println("---------------");
-            System.out.println(validationCar);
-            System.out.println("Average price: " + average);
-            System.out.println("Error Measurement: " + errorMeasurement);
+//            System.out.println("---------------");
+//            System.out.println(validationCar);
+//            System.out.println("Average price: " + average);
+//            System.out.println("Error Measurement: " + errorMeasurement);
+            this.writeFile.writeReportCar(validationCar, average, errorMeasurement);
         }
 
     }
