@@ -1,6 +1,8 @@
 package car_factory;
 
-public class Car {
+import java.util.Arrays;
+
+public class Car implements  Comparable<Car>{
 
     private String make;
     private String model;
@@ -18,6 +20,7 @@ public class Car {
     private String cityMpg;
     private String popularity;
     private String msrp;
+    private int muchSimilar;
 
     public Car(String make, String model, String year, String engineFuelType, String engineHp, String engineCylinders, String transmissionType, String driven_wheels,
                String numberOfDoors, String[] marketCategory, String vehicleSize, String vehicleStyle, String highwayMPG, String cityMpg, String popularity, String msrp) {
@@ -38,6 +41,15 @@ public class Car {
         this.cityMpg = cityMpg;
         this.popularity = popularity;
         this.msrp = msrp;
+        this.muchSimilar = 0;
+    }
+
+    public int getMuchSimilar() {
+        return muchSimilar;
+    }
+
+    public void setMuchSimilar(int muchSimilar) {
+        this.muchSimilar = muchSimilar;
     }
 
     public String getMake() {
@@ -166,5 +178,39 @@ public class Car {
 
     public void setMsrp(String msrp) {
         this.msrp = msrp;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
+                ", engineFuelType='" + engineFuelType + '\'' +
+                ", engineHp='" + engineHp + '\'' +
+                ", engineCylinders='" + engineCylinders + '\'' +
+                ", transmissionType='" + transmissionType + '\'' +
+                ", driven_wheels='" + driven_wheels + '\'' +
+                ", numberOfDoors='" + numberOfDoors + '\'' +
+                ", marketCategory=" + Arrays.toString(marketCategory) +
+                ", vehicleSize='" + vehicleSize + '\'' +
+                ", vehicleStyle='" + vehicleStyle + '\'' +
+                ", highwayMPG='" + highwayMPG + '\'' +
+                ", cityMpg='" + cityMpg + '\'' +
+                ", popularity='" + popularity + '\'' +
+                ", msrp='" + msrp + '\'' +
+                ", muchSimilar=" + muchSimilar +
+                '}';
+    }
+
+    @Override
+    public int compareTo(Car otherCar) {
+        if (this.muchSimilar > otherCar.getMuchSimilar()) {
+            return -1;
+        }
+        if (this.muchSimilar < otherCar.getMuchSimilar()) {
+            return 1;
+        }
+        return 0;
     }
 }
