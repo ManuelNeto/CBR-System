@@ -71,12 +71,19 @@ public class Separator {
 
         for(Car validationCar : this.validationCars.getValidationCars()){
             float average = averagePrice(validationCar);
+            float errorMeasurement = errorMeasurement(average, Float.parseFloat(validationCar.getMsrp()));
             System.out.println("---------------");
             System.out.println(validationCar);
             System.out.println("Average price: " + average);
+            System.out.println("Error Measurement: " + errorMeasurement);
         }
 
     }
+
+    public float errorMeasurement(float average, float price) {
+        return (float) Math.pow(average - price, 2);
+    }
+
 
 
     public float averagePrice(Car car){
