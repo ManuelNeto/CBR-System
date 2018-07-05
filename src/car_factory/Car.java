@@ -19,11 +19,11 @@ public class Car implements  Comparable<Car>{
     private String highwayMPG;
     private String cityMpg;
     private String popularity;
-    private String msrp;
+    private float msrp;
     private int muchSimilar;
 
     public Car(String make, String model, String year, String engineFuelType, String engineHp, String engineCylinders, String transmissionType, String driven_wheels,
-               String numberOfDoors, String[] marketCategory, String vehicleSize, String vehicleStyle, String highwayMPG, String cityMpg, String popularity, String msrp) {
+               String numberOfDoors, String[] marketCategory, String vehicleSize, String vehicleStyle, String highwayMPG, String cityMpg, String popularity, float msrp) {
 
         this.make = make;
         this.model = model;
@@ -172,11 +172,11 @@ public class Car implements  Comparable<Car>{
         this.popularity = popularity;
     }
 
-    public String getMsrp() {
+    public float getMsrp() {
         return msrp;
     }
 
-    public void setMsrp(String msrp) {
+    public void setMsrp(float msrp) {
         this.msrp = msrp;
     }
 

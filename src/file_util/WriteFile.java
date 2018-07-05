@@ -8,12 +8,13 @@ import java.io.IOException;
 
 public class WriteFile {
 
-    public static void writeReportCar(Car car, float average, float errorMeasurement) throws IOException {
+    public static void writeReportCar(Car car, float average, float errorMeasurement, int bestk) throws IOException {
         BufferedWriter buffWrite = new BufferedWriter(new FileWriter("/home/treinamento-asus/CBR-System/src/file_util/report.txt", true));
         buffWrite.append("---------------" + "\n");
         buffWrite.append(car.toString() + "\n");
         buffWrite.append("Average price: " + average + "\n");
         buffWrite.append("Error Measurement: " + errorMeasurement + "\n");
+        buffWrite.append("Best K: " + bestk + "\n");
         buffWrite.close();
     }
 }

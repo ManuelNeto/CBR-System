@@ -1,4 +1,0 @@
----------------
-Car{make='Ferrari', model='Superamerica', year='2005', engineFuelType='premium unleaded (required)', engineHp='532', engineCylinders='12', transmissionType='AUTOMATED_MANUAL', driven_wheels='rear wheel drive', numberOfDoors='2', marketCategory=["Exotic], vehicleSize='High-Performance"', vehicleStyle='Compact', highwayMPG='Convertible', cityMpg='16', popularity='9', msrp='2774', muchSimilar=0}
-Average price: 2774.0
-Error Measurement: 0.0

@@ -62,7 +62,7 @@ public class More_similar {
                 this.muchSimilar = this.muchSimilar + 1;
             }
 
-            if(car.getMsrp().equals(carComparete.getMsrp())){
+            if(car.getMsrp() == carComparete.getMsrp()){
                 this.muchSimilar = this.muchSimilar + 1;
             }
 
