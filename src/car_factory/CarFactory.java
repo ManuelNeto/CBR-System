@@ -19,8 +19,14 @@ public class CarFactory {
     }
 
     public void createCars () {
+        int count = 0;
         for (String[] stringCar : this.stringCars) {
-            createCar(stringCar);
+            if(count != 0 && stringCar.length == 16) {
+                createCar(stringCar);
+                count += 1;
+            }
+
+            count += 1;
         }
     }
 
@@ -43,7 +49,7 @@ public class CarFactory {
                     stringCars[12],
                     stringCars[13],
                     stringCars[14],
-                    stringCars[15]);
+                    Float.valueOf(stringCars[15]));
 
             objectCars.add(objectCar);
     }
